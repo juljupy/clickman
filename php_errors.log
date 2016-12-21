@@ -1,0 +1,28 @@
+[21-Dec-2016 16:01:53 UTC] PHP Fatal error:  Access level to App\RoleUser::$timestamps must be public (as in class Illuminate\Database\Eloquent\Model) in /usr/local/var/www/htdocs/Domicilios/ClickMan/app/RoleUser.php on line 19
+[21-Dec-2016 16:01:53 UTC] PHP Stack trace:
+[21-Dec-2016 16:01:53 UTC] PHP   1. {main}() /usr/local/var/www/htdocs/Domicilios/ClickMan/artisan:0
+[21-Dec-2016 16:01:53 UTC] PHP   2. Illuminate\Foundation\Console\Kernel->handle() /usr/local/var/www/htdocs/Domicilios/ClickMan/artisan:35
+[21-Dec-2016 16:01:53 UTC] PHP   3. Symfony\Component\Console\Application->run() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php:121
+[21-Dec-2016 16:01:53 UTC] PHP   4. Symfony\Component\Console\Application->doRun() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/symfony/console/Application.php:118
+[21-Dec-2016 16:01:53 UTC] PHP   5. Symfony\Component\Console\Application->doRunCommand() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/symfony/console/Application.php:187
+[21-Dec-2016 16:01:53 UTC] PHP   6. Illuminate\Console\Command->run() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/symfony/console/Application.php:821
+[21-Dec-2016 16:01:53 UTC] PHP   7. Symfony\Component\Console\Command\Command->run() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Console/Command.php:155
+[21-Dec-2016 16:01:53 UTC] PHP   8. Illuminate\Console\Command->execute() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/symfony/console/Command/Command.php:254
+[21-Dec-2016 16:01:53 UTC] PHP   9. Illuminate\Container\Container->call() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Console/Command.php:169
+[21-Dec-2016 16:01:53 UTC] PHP  10. call_user_func_array:{/usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Container/Container.php:508}() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Container/Container.php:508
+[21-Dec-2016 16:01:53 UTC] PHP  11. Illuminate\Database\Console\Migrations\MigrateCommand->fire() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Container/Container.php:508
+[21-Dec-2016 16:01:53 UTC] PHP  12. Illuminate\Console\Command->call() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php:79
+[21-Dec-2016 16:01:53 UTC] PHP  13. Illuminate\Console\Command->run() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Console/Command.php:185
+[21-Dec-2016 16:01:53 UTC] PHP  14. Symfony\Component\Console\Command\Command->run() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Console/Command.php:155
+[21-Dec-2016 16:01:53 UTC] PHP  15. Illuminate\Console\Command->execute() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/symfony/console/Command/Command.php:254
+[21-Dec-2016 16:01:53 UTC] PHP  16. Illuminate\Container\Container->call() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Console/Command.php:169
+[21-Dec-2016 16:01:53 UTC] PHP  17. call_user_func_array:{/usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Container/Container.php:508}() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Container/Container.php:508
+[21-Dec-2016 16:01:53 UTC] PHP  18. Illuminate\Database\Console\Seeds\SeedCommand->fire() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Container/Container.php:508
+[21-Dec-2016 16:01:53 UTC] PHP  19. Illuminate\Database\Eloquent\Model::unguarded() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php:64
+[21-Dec-2016 16:01:53 UTC] PHP  20. Illuminate\Database\Console\Seeds\SeedCommand->Illuminate\Database\Console\Seeds\{closure}() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php:2288
+[21-Dec-2016 16:01:53 UTC] PHP  21. DatabaseSeeder->run() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Database/Console/Seeds/SeedCommand.php:63
+[21-Dec-2016 16:01:53 UTC] PHP  22. Illuminate\Database\Seeder->call() /usr/local/var/www/htdocs/Domicilios/ClickMan/database/seeds/DatabaseSeeder.php:17
+[21-Dec-2016 16:01:53 UTC] PHP  23. RoleUserTableSeeder->run() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/laravel/framework/src/Illuminate/Database/Seeder.php:39
+[21-Dec-2016 16:01:53 UTC] PHP  24. spl_autoload_call() /usr/local/var/www/htdocs/Domicilios/ClickMan/database/seeds/RoleUserTableSeeder.php:15
+[21-Dec-2016 16:01:53 UTC] PHP  25. Composer\Autoload\ClassLoader->loadClass() /usr/local/var/www/htdocs/Domicilios/ClickMan/database/seeds/RoleUserTableSeeder.php:15
+[21-Dec-2016 16:01:53 UTC] PHP  26. Composer\Autoload\includeFile() /usr/local/var/www/htdocs/Domicilios/ClickMan/vendor/composer/ClassLoader.php:301
