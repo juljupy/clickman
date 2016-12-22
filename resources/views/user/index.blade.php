@@ -6,7 +6,11 @@
         <div class="col-md-8 col-md-offset-2">
             <h2>System Users</h2>
             <p>
-                <div class="btn btn-success" role="group" aria-label="create user">Create</div>
+                <a href="{{ route('users.create') }}">
+                    <button type="button" class="btn btn-success btn-sm">
+                        Create
+                    </button>
+                </a>
             </p>
             <div class="panel panel-default">
                 <!-- Default panel contents -->
@@ -25,14 +29,25 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                    <a href="{{ url('/users/'.$user->id.'/edit') }}">
+                                    <a href="{{ route('users.show',$user->id) }}">
+                                        <button type="button" class="btn btn-success btn-sm">
+                                            View
+                                        </button>
+                                    </a>
+                                    <a href="{{ route('users.edit',$user->id) }}">
                                         <button type="button" class="btn btn-primary btn-sm">
                                             Edit
                                         </button>
                                     </a>
-                                    <button type="button" class="btn btn-danger btn-sm">
-                                        Delete
-                                    </button>
+                                    <a>
+                                        <form style="display: inline;" action="{{route('users.destroy',$user->id)}}" method="POST">
+                                            {{csrf_field()}}
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" onclick="return confirm('Are you sure to delete this user?');" class="btn btn-danger btn-sm">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </a>
                                 </td>
                             </tr>
                         @empty
