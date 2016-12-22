@@ -5,6 +5,9 @@
     <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
             <div class="panel-heading">Create new User</div>
+            @foreach ($errors as $error)
+                {{ $error }}
+            @endforeach
             <div class="panel-body">
                 <form class="form-horizontal" role="form" method="POST" action="{{ route('users.store') }}">
                     {{csrf_field()}}

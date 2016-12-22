@@ -35,4 +35,11 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'model' => App\User::class,
+        'client_id' => '360790844278135',
+        'client_secret' => 'b03f574f6beb025e0dd43dd4acdc7de7',
+        'redirect' => 'http://clickman.com/callback'
+    ],
+
 ];
