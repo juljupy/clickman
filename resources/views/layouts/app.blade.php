@@ -47,12 +47,16 @@
                             <li>
                                 <a href="/home">Home <span class="sr-only">(current)</span></a>
                             </li>
-                            <li>
-                                <a href="/users">Users</a>
-                            </li>
-                            <li>
-                                <a href="/roles">Roles</a>
-                            </li>
+                            @can('list_user')
+                                <li>
+                                    <a href="/users">Users</a>
+                                </li>
+                            @endcan
+                            @can('list_role')
+                                <li>
+                                    <a href="/roles">Roles</a>
+                                </li>
+                            @endcan
                         </ul>
                     @endif
 

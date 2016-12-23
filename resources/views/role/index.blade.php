@@ -28,25 +28,31 @@
                                 <td>{{ $role->fullname }}</td>
                                 <td>{{ $role->name }}</td>
                                 <td>
-                                    <a href="{{ route('roles.show',$role->id) }}">
-                                        <button type="button" class="btn btn-success btn-sm">
-                                            View
-                                        </button>
-                                    </a>
-                                    <a href="{{ route('roles.edit',$role->id) }}">
-                                        <button type="button" class="btn btn-primary btn-sm">
-                                            Edit
-                                        </button>
-                                    </a>
-                                    <a>
-                                        <form style="display: inline;" action="{{route('roles.destroy',$role->id)}}" method="POST">
-                                            {{csrf_field()}}
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" onclick="return confirm('Are you sure to delete this role?');" class="btn btn-danger btn-sm">
-                                                Delete
+                                    @can('view_role')
+                                        <a href="{{ route('roles.show',$role->id) }}">
+                                            <button type="button" class="btn btn-success btn-sm">
+                                                View
                                             </button>
-                                        </form>
-                                    </a>
+                                        </a>
+                                    @endcan
+                                    @can('edit_role')
+                                        <a href="{{ route('roles.edit',$role->id) }}">
+                                            <button type="button" class="btn btn-primary btn-sm">
+                                                Edit
+                                            </button>
+                                        </a>
+                                    @endcan
+                                    @can('delete_role')
+                                        <a>
+                                            <form style="display: inline;" action="{{route('roles.destroy',$role->id)}}" method="POST">
+                                                {{csrf_field()}}
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" onclick="return confirm('Are you sure to delete this role?');" class="btn btn-danger btn-sm">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </a>
+                                    @endcan
                                 </td>
                             </tr>
                         @empty

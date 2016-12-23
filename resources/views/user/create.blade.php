@@ -10,6 +10,7 @@
             @endforeach
             <div class="panel-body">
                 <form class="form-horizontal" role="form" method="POST" action="{{ route('users.store') }}">
+                    <input name="verified" type="hidden" value="1">
                     {{csrf_field()}}
 
                     <div class="form-group{{ ($errors->has('name')) ? ' has-error' : '' }}">
@@ -40,17 +41,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group{{ ($errors->has('phonenumber')) ? ' has-error' : '' }}">
+                    <div class="form-group">
                         <label for="phonenumber" class="col-md-4 control-label">Phonenumber</label>
 
                         <div class="col-md-6">
-                            <input id="phonenumber" type="text" name="phonenumber" class="form-control" placeholder="Enter phonenumber here" required>
-
-                            @if ($errors->has('phonenumber'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('phonenumber') }}</strong>
-                                </span>
-                            @endif
+                            <input id="phonenumber" type="text" name="phonenumber" class="form-control" placeholder="Enter phonenumber here">
                         </div>
                     </div>
 

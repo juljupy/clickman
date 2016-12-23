@@ -16,7 +16,21 @@ class UsersTableSeeder extends Seeder
         	'name' => 'Administrator',
         	'email' => 'admin@mail.com',
         	'password' => Hash::make('adminclick'),
-        	'phonenumber' => 123
+            'verified' => 1
+        ]);
+
+        User::create([
+            'name' => 'Agent',
+            'email' => 'agent@mail.com',
+            'password' => Hash::make('agentclick'),
+            'verified' => 1
+        ]);
+
+        User::create([
+            'name' => 'Customer',
+            'email' => 'customer@mail.com',
+            'password' => Hash::make('customerclick'),
+            'verified' => 1
         ]);
     }
 }

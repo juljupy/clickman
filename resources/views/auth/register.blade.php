@@ -7,9 +7,6 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    @if ( Session::has('msg') )
-                        <div class="alert alert-success" role="alert">{{ Session::get('msg') }}--mmmmm</div>
-                    @endif
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
 
@@ -41,17 +38,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ ($errors->has('phonenumber')) ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="phonenumber" class="col-md-4 control-label">Phonenumber</label>
 
                             <div class="col-md-6">
-                                <input id="phonenumber" type="text" name="phonenumber" class="form-control" placeholder="Enter phonenumber here" required>
+                                <input id="phonenumber" type="text" name="phonenumber" class="form-control" placeholder="Enter phonenumber here">
 
-                                @if ($errors->has('phonenumber'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('phonenumber') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 

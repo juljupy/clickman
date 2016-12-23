@@ -7,6 +7,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
+                    @if ( Session::has('msg') )
+                        <div class="alert alert-success" role="alert">{{ Session::get('msg') }}</div>
+                    @endif
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 

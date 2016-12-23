@@ -70,7 +70,6 @@ class RegisterController extends Controller
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'phonenumber' => $data['phonenumber'],
             'password' => bcrypt($data['password']),
             'email_token' => str_random(10),
         ]);
@@ -98,12 +97,12 @@ class RegisterController extends Controller
             $email = new EmailVerification(new User(['email_token' => $user->email_token]));
             Mail::to($user->email)->send($email);
             DB::commit();
-            return redirect('register')->with('msg','A verification mail has been sent, please check your email inbox!');
+            return redirect('login')->with('msg','A verification mail has been sent, please check your email inbox!');
         }
         catch(Exception $e)
         {
             DB::rollback(); 
-            return redirect('register')->with('msg','An error has ocurred, please contact your system administrator!');
+            return redirect('login')->with('msg','An error has ocurred, please contact your system administrator!');
         }
     }
 

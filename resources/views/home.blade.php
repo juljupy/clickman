@@ -11,10 +11,12 @@
                 </div>
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
                 <div class="panel-body">
-                    Items will be listed in here!
+                    <a href="{{ route('users.show',Auth::user()->id) }}">
+                        <button type="button" class="btn btn-success btn-sm">
+                            View details
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

@@ -38,17 +38,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group{{ ($errors->has('phonenumber')) ? ' has-error' : '' }}">
+                    <div class="form-group">
                         <label for="phonenumber" class="col-md-4 control-label">Phonenumber</label>
 
                         <div class="col-md-6">
-                            <input id="phonenumber" type="text" name="phonenumber" class="form-control" placeholder="Enter phonenumber here" value="{{ $user->phonenumber }}" required>
-
-                            @if ($errors->has('phonenumber'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('phonenumber') }}</strong>
-                                </span>
-                            @endif
+                            <input id="phonenumber" type="text" name="phonenumber" class="form-control" placeholder="Enter phonenumber here" value="{{ $user->phonenumber }}">
                         </div>
                     </div>
 

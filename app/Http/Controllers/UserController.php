@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
-use Hash;
+use App\Permission;
+use Auth;
 
 class UserController extends Controller
 {
@@ -25,7 +26,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $this->authorize('list_user');
+
         $users = User::all();
 
         return view('user.index', compact('users'));
@@ -38,6 +41,8 @@ class UserController extends Controller
      */
     public function create()
     {
+        $this->authorize('create_user');
+
         $roles = Role::all();
 
         return view('user.create', compact('roles'));
@@ -51,12 +56,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create_user');
         // validation
         $this->validate($request,[
             'name'=> 'required',
             'email' => 'required|email|max:255|unique:users',
-            'phonenumber' => 'required',
-            'password' => 'required',
+            'password' => 'required'
         ]);
 
         // create new data
@@ -65,6 +70,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->phonenumber = $request->phonenumber;
         $user->password = bcrypt($request->password);
+        $user->verified = $request->verified;
         $user->save();
 
         $user->roles()->attach($request->roles);
@@ -80,6 +86,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        $this->authorize('view_user');
+
         $user = User::with('roles')->findOrFail($id);
 
         return view('user.view', compact('user'));
@@ -93,6 +101,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('edit_user');
+
         $user = User::with('roles')->findOrFail($id);
 
         $roles = Role::all();
@@ -117,11 +127,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('edit_user');
+
         // validation
         $this->validate($request,[
             'name'=> 'required',
-            'email' => 'required|email|max:255|unique:users',
-            'phonenumber' => 'required'
+            'email' => 'required|email|max:255|unique:users'
         ]);
 
         $user = User::findOrFail($id);
@@ -149,6 +160,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete_user');
 
         $user = User::findOrFail($id);
         $user->delete();
