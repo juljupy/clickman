@@ -100,8 +100,8 @@
                             <button type="submit" class="btn btn-primary">
                                 Save
                             </button>
-                            <a href="/roles">
-                                <button class="btn btn-danger">
+                            <a href="{{ url('/users') }}">
+                                <button type="button" class="btn btn-danger">
                                     Cancel
                                 </button>
                             </a>

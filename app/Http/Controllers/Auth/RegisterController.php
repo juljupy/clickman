@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use DB;
+use Mail;
 use App\User;
+use Validator;
+use Illuminate\Http\Request;
+use App\Mail\EmailVerification;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -50,22 +54,66 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
+            'phonenumber' => 'required',
             'password' => 'required|min:6|confirmed',
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new user instance after a valid registration with a random email token.
      *
      * @param  array  $data
      * @return User
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phonenumber' => $data['phonenumber'],
             'password' => bcrypt($data['password']),
+            'email_token' => str_random(10),
         ]);
+
+        $user->roles()->attach(3);
+        return $user;
+    }
+
+    /**
+    *  Over-ridden the register method from the "RegistersUsers" trait
+    * 
+    */
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) 
+        {
+            $this->throwValidationException($request, $validator);
+        }
+
+        DB::beginTransaction();
+        try
+        {
+            $user = $this->create($request->all());
+            $email = new EmailVerification(new User(['email_token' => $user->email_token]));
+            Mail::to($user->email)->send($email);
+            DB::commit();
+            return redirect('register')->with('msg','A verification mail has been sent, please check your email inbox!');
+        }
+        catch(Exception $e)
+        {
+            DB::rollback(); 
+            return redirect('register')->with('msg','An error has ocurred, please contact your system administrator!');
+        }
+    }
+
+    /**
+    *  Get the user who has the same token and change his/her status to verified i.e. 1
+    * 
+    */
+    public function verify($token)
+    {
+        User::where('email_token',$token)->firstOrFail()->verified();
+        return redirect('login');
     }
 }

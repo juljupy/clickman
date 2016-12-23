@@ -69,8 +69,8 @@
                             <button type="submit" class="btn btn-primary">
                                 Save
                             </button>
-                            <a href="/roles">
-                                <button class="btn btn-danger">
+                            <a href="{{ url('/roles') }}">
+                                <button type="button" class="btn btn-danger">
                                     Cancel
                                 </button>
                             </a>

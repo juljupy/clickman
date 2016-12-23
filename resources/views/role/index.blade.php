@@ -15,7 +15,6 @@
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">System Roles</div>
-
                 <!-- Table -->
                 <table class="table">
                     <thead>

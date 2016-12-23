@@ -7,6 +7,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
+                    @if ( Session::has('msg') )
+                        <div class="alert alert-success" role="alert">{{ Session::get('msg') }}--mmmmm</div>
+                    @endif
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
                         {{ csrf_field() }}
 
@@ -14,7 +17,7 @@
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Enter name here" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -28,7 +31,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Enter email here" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -38,11 +41,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ ($errors->has('phonenumber')) ? ' has-error' : '' }}">
+                            <label for="phonenumber" class="col-md-4 control-label">Phonenumber</label>
+
+                            <div class="col-md-6">
+                                <input id="phonenumber" type="text" name="phonenumber" class="form-control" placeholder="Enter phonenumber here" required>
+
+                                @if ($errors->has('phonenumber'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phonenumber') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="Enter password here" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -56,7 +73,7 @@
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Re-enter password here" required>
                             </div>
                         </div>
 

@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/redirect', 'SocialAuthController@redirect');
 Route::get('/callback', 'SocialAuthController@callback');
 
+Route::get('register/verify/{token}', 'Auth\RegisterController@verify'); 
+
 Route::resources([
 	'users' => 'UserController',
 	'roles' => 'RoleController'

@@ -54,7 +54,7 @@ class UserController extends Controller
         // validation
         $this->validate($request,[
             'name'=> 'required',
-            'email' => 'unique:users',
+            'email' => 'required|email|max:255|unique:users',
             'phonenumber' => 'required',
             'password' => 'required',
         ]);
@@ -64,7 +64,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phonenumber = $request->phonenumber;
-        $user->password = Hash::make($request->password);
+        $user->password = bcrypt($request->password);
         $user->save();
 
         $user->roles()->attach($request->roles);
@@ -120,7 +120,7 @@ class UserController extends Controller
         // validation
         $this->validate($request,[
             'name'=> 'required',
-            'email' => 'required',
+            'email' => 'required|email|max:255|unique:users',
             'phonenumber' => 'required'
         ]);
 
@@ -130,7 +130,7 @@ class UserController extends Controller
         $user->phonenumber = $request->phonenumber;
 
         if($request->password != ''){
-            $user->password = Hash::make($request->password);
+            $user->password = bcrypt($request->password);
         }
 
         $user->save();
