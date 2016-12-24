@@ -57,6 +57,11 @@
                                     <a href="/roles">Roles</a>
                                 </li>
                             @endcan
+                            @if (Auth::user()->roles->contains('name','admin'))
+                                <li>
+                                    <a href="/importExport">Import / Export</a>
+                                </li>
+                            @endif
                         </ul>
                     @endif
 

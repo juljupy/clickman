@@ -23,6 +23,13 @@ Route::get('/callback', 'SocialAuthController@callback');
 
 Route::get('register/verify/{token}', 'Auth\RegisterController@verify'); 
 
+
+Route::get('importExport', 'ExportImportController@importExport');
+
+Route::get('downloadExcel/{type}', 'ExportImportController@downloadExcel');
+
+Route::post('importExcel', 'ExportImportController@importExcel');
+
 Route::resources([
 	'users' => 'UserController',
 	'roles' => 'RoleController'
