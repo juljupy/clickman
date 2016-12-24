@@ -1,40 +1,50 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img width="150"src="https://laravel.com/laravel.png"></a></p>
+## Backend Software Developer Test
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+In this test I cover the following topics:
 
-## About Laravel
+- Login Users.
+- Login Users with Facebook account.
+- Register user with email confirmation code.
+- Users CRUD.
+- Roles CRUD.
+- ACL Implementation for permissions.
+- Import / Export Users from / to XLS, XLSX, CSV.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Login Users.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+User can login with email and password credentials.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+## Login Users with Facebook account.
 
-## Learning Laravel
+User can login with Facebook account, if the user doesn't exist it will be created and logued in automatically.
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+The library used:
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+Laravel Socialite (https://github.com/laravel/socialite).
 
-## Contributing
+The scripts to control this proccess are:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+- app/SocialAccount.php
+- app/SocialAccountService.php
 
-## Security Vulnerabilities
+## Register user with email confirmation code.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+User can register through Register link, after it fills the register form an email is sent to the emal that the user has entered with a confirmation link.
 
-## License
+## Users CRUD.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+There are modules to process CRUD for users, and assign Roles to it (All this options are controlled by permissions assigned in roles modules).
+
+## Roles CRUD.
+
+There are modules to process CRUD for Roles, here the Administrator user can create Dinamic Roles with several permissions.
+
+## ACL Implementation for permissions
+
+Behind scenes Roles and Permissions assigned to the Logued user controls options and functions inside the webapp.
+
+## Import / Export Users from / to XLS, XLSX, CSV.
+
+Administrator user can Import and Export user data From and To XLS, XLSX, CSV.
+
+The library Laravel Excel v2.1.* for Laravel 5 has been used to proccess easily (https://github.com/Maatwebsite/Laravel-Excel).
